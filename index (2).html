@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sona's Celestial Love Story</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        .text-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .bg-gradient-celestial {
+            background: linear-gradient(135deg, #1a2a6c 0%, #77BEF0 50%, #ffffff 100%);
+        }
+        .petal {
+            position: absolute;
+            background: rgba(119, 190, 240, 0.6);
+            border-radius: 150% 0 150% 0;
+            filter: blur(1px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="font-poppins bg-gradient-to-b from-[#1a2a6c] via-[#77BEF0] to-[#ffffff] min-h-screen text-white overflow-x-hidden">
+    <audio id="bgMusic" loop>
+        <source src="https://github.com/Mikhaiel/kunjiipennu/blob/main/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="fixed top-4 right-4 z-50 flex gap-2">
+        <button id="musicToggle" class="p-2 bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition-all">
+            <i data-feather="music"></i>
+        </button>
+        <button id="verseToggle" class="p-2 bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition-all">
+            <i data-feather="book"></i>
+        </button>
+    </div>
+
+    <div id="versePopup" class="hidden fixed inset-0 flex items-center justify-center z-50 bg-black/60 backdrop-blur-sm">
+        <div class="bg-[#1a2a6c] p-8 rounded-xl max-w-md mx-4 relative">
+            <button id="closeVerse" class="absolute top-2 right-2 p-1 rounded-full hover:bg-white/10">
+                <i data-feather="x"></i>
+            </button>
+            <h3 class="font-playfair text-2xl mb-4 text-[#FFCB61]">Our Verse</h3>
+            <p class="text-lg italic mb-4">"My beloved is mine and I am his."</p>
+            <p class="text-sm text-white/70">— Song of Solomon 2:16</p>
+        </div>
+    </div>
+
+    <main class="relative">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
+            <div class="absolute inset-0 overflow-hidden z-0">
+                <div id="particles-js" class="absolute inset-0"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1a2a6c]/80"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-3xl">
+                <h1 class="font-playfair text-5xl md:text-7xl mb-6 text-[#FFCB61] heartbeat">October 17</h1>
+                <h2 class="font-playfair text-3xl md:text-5xl mb-8">The Day My World Changed</h2>
+                <p class="text-xl md:text-2xl mb-8 leading-relaxed">"Your birthday — the most beautiful day in my world. This website is my gift, my love, my story for you, Sona."</p>
+                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10">
+                    <p class="italic text-lg">"Every good and perfect gift is from above."</p>
+                    <p class="text-sm mt-2">— James 1:17</p>
+                </div>
+                <button class="mt-12 px-8 py-3 bg-[#EA5B6F] hover:bg-[#e8435a] rounded-full font-medium transition-all transform hover:scale-105">
+                    Play Our Story <i data-feather="heart" class="inline ml-2"></i>
+                </button>
+            </div>
+
+            <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
+                <i data-feather="chevron-down" class="text-white/60"></i>
+            </div>
+        </section>
+
+        <!-- Story Sections -->
+        <section class="min-h-screen py-20 px-4 md:px-8 flex items-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[#1a2a6c]/50 z-0"></div>
+            <div class="max-w-4xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="font-playfair text-3xl md:text-4xl mb-6 text-[#77BEF0]">I Have Never Lived for Myself, Sona...</h2>
+                    <p class="text-lg mb-6 leading-relaxed">Before you came, there were no real happy moments. That first message from you came when I was lost and broken — not knowing what decision to take. You became my answer.</p>
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 max-w-md">
+                        <p class="italic">"The Lord will guide you always; He will satisfy your needs in a sun-scorched land."</p>
+                        <p class="text-sm mt-2">— Isaiah 58:11</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="rounded-xl overflow-hidden shadow-2xl floating">
+                        <img src="https://raw.githubusercontent.com/Mikhaiel/kunjiipennu/refs/heads/main/mikhaiel%20%20(12).jpg" alt="Sona in November" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -inset-8 -z-10">
+                        <div class="w-full h-full rounded-full bg-[#77BEF0]/20 blur-xl"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="min-h-screen py-20 px-4 md:px-8 flex items-center relative overflow-hidden bg-[#1a2a6c]">
+            <div class="max-w-4xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://raw.githubusercontent.com/Mikhaiel/kunjiipennu/refs/heads/main/IMG_20241221_160521465.jpg" alt="Sona in December" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -inset-8 -z-10">
+                        <div class="w-full h-full rounded-full bg-[#FFCB61]/20 blur-xl"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="font-playfair text-3xl md:text-4xl mb-6 text-[#FFCB61]">December: The First Time I Saw You</h2>
+                    <p class="text-lg mb-6 leading-relaxed">Your simple words, your soft voice, that black dress — everything about you felt like peace. When I touched your hand, it felt like holding my world.</p>
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 max-w-md">
+                        <p class="italic">"I have found the one my soul loves."</p>
+                        <p class="text-sm mt-2">— Song of Solomon 3:4</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue with other sections following the same pattern -->
+        <!-- April Section -->
+        <section class="min-h-screen py-20 px-4 md:px-8 flex items-center relative overflow-hidden bg-gradient-to-b from-[#1a2a6c] to-[#77BEF0]">
+            <div class="max-w-4xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="font-playfair text-3xl md:text-4xl mb-6 text-[#FF894F]">April: That Green Dress</h2>
+                    <p class="text-lg mb-6 leading-relaxed">You stepped out of that auto wearing the green dress, and time stood still. That day I realized… you are not part of my life — you are my life.</p>
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 max-w-md">
+                        <p class="italic">"And now these three remain: faith, hope, and love. But the greatest of these is love."</p>
+                        <p class="text-sm mt-2">— 1 Corinthians 13:13</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="rounded-xl overflow-hidden shadow-2xl floating">
+                        <img src="https://raw.githubusercontent.com/Mikhaiel/kunjiipennu/refs/heads/main/IMG_20250410_123854604.jpg" alt="Sona in April" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -inset-8 -z-10">
+                        <div class="w-full h-full rounded-full bg-[#FF894F]/20 blur-xl"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- September Section -->
+        <section class="min-h-screen py-20 px-4 md:px-8 flex items-center relative overflow-hidden bg-[#77BEF0]">
+            <div class="max-w-4xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://raw.githubusercontent.com/Mikhaiel/kunjiipennu/refs/heads/main/mikhaiel%20-108.jpg" alt="Sona in September" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -inset-8 -z-10">
+                        <div class="w-full h-full rounded-full bg-[#EA5B6F]/20 blur-xl"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="font-playfair text-3xl md:text-4xl mb-6 text-[#EA5B6F]">September: My World Returned</h2>
+                    <p class="text-lg mb-6 leading-relaxed">After all the silence, the fights, the waiting — you came back. When I held your feet and said sorry, I found my home again. Because Sona, you are not just my love — you are my peace.</p>
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 max-w-md">
+                        <p class="italic">"Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you."</p>
+                        <p class="text-sm mt-2">— Ephesians 4:32</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Section -->
+        <section class="min-h-screen py-20 px-4 md:px-8 flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#77BEF0] to-[#1a2a6c]">
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <h2 class="font-playfair text-4xl md:text-5xl mb-8">Our Family — My Everything</h2>
+                <div class="relative inline-block mb-12">
+                    <img src="https://raw.githubusercontent.com/Mikhaiel/kunjiipennu/refs/heads/main/images%20(3).jpeg" alt="Our Family" class="w-full max-w-md rounded-xl shadow-2xl mx-auto">
+                    <div class="absolute -inset-8 -z-10">
+                        <div class="w-full h-full rounded-full bg-[#FFCB61]/20 blur-xl"></div>
+                    </div>
+                </div>
+                <p class="text-xl mb-8 max-w-2xl mx-auto leading-relaxed">This is my everything — you, us, our family. You made me believe again in love that heals, forgives, and lasts forever.</p>
+                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10 inline-block">
+                    <p class="italic">"But as for me and my household, we will serve the Lord."</p>
+                    <p class="text-sm mt-2">— Joshua 24:15</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Section -->
+        <section class="min-h-screen py-20 px-4 flex items-center justify-center text-center relative overflow-hidden bg-[#1a2a6c]">
+            <div class="absolute inset-0 overflow-hidden z-0">
+                <div id="final-particles" class="absolute inset-0"></div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto relative z-10">
+                <h2 class="font-playfair text-4xl md:text-6xl mb-8 text-[#FFCB61]">Forever Sona</h2>
+                <p class="text-xl md:text-2xl mb-8 leading-relaxed">I have never lived for myself, Sona… Because my life began with you.</p>
+                <p class="text-xl md:text-2xl mb-8 leading-relaxed">You are my reason, my calm, my forever.</p>
+                <div class="text-5xl mb-12 heartbeat text-[#EA5B6F]">Happy Birthday, My Sona 💙</div>
+                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10 inline-block mb-12">
+                    <p class="italic">"Two are better than one… If one falls down, the other can help them up."</p>
+                    <p class="text-sm mt-2">— Ecclesiastes 4:9–10</p>
+                </div>
+                <div class="text-6xl text-[#77BEF0] heartbeat" id="infinitySymbol">∞</div>
+                <button class="mt-12 px-8 py-3 bg-white text-[#1a2a6c] hover:bg-white/90 rounded-full font-medium transition-all transform hover:scale-105">
+                    Play Again <i data-feather="refresh-cw" class="inline ml-2"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize music and verse popup
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+            
+            const bgMusic = document.getElementById('bgMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const verseToggle = document.getElementById('verseToggle');
+            const versePopup = document.getElementById('versePopup');
+            const closeVerse = document.getElementById('closeVerse');
+            
+            // Initialize particles.js for background effects
+            if (window.particlesJS) {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {"value": 80, "density": {"enable": true, "value_area": 800}},
+                        "color": {"value": "#77BEF0"},
+                        "shape": {"type": "circle"},
+                        "opacity": {"value": 0.5, "random": false},
+                        "size": {"value": 3, "random": true},
+                        "line_linked": {"enable": true, "distance": 150, "color": "#77BEF0", "opacity": 0.4, "width": 1},
+                        "move": {"enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false}
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {"enable": true, "mode": "grab"},
+                            "onclick": {"enable": true, "mode": "push"}
+                        }
+                    }
+                });
+            }
+            
+            // Music toggle
+            musicToggle.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    musicToggle.innerHTML = '<i data-feather="music"></i>';
+                } else {
+                    bgMusic.pause();
+                    musicToggle.innerHTML = '<i data-feather="volume-x"></i>';
+                }
+                feather.replace();
+            });
+            
+            // Verse popup toggle
+            verseToggle.addEventListener('click', function() {
+                versePopup.classList.toggle('hidden');
+            });
+            
+            closeVerse.addEventListener('click', function() {
+                versePopup.classList.add('hidden');
+            });
+            
+            // GSAP animations for scroll-triggered effects
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate sections as they come into view
+            gsap.utils.toArray('section').forEach((section, i) => {
+                if (i > 0) { // Skip first section
+                    gsap.from(section, {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%",
+                            toggleActions: "play none none none"
+                        },
+                        opacity: 0,
+                        y: 50,
+                        duration: 1
+                    });
+                }
+            });
+            
+            // Create floating petals
+            function createPetals() {
+                const container = document.querySelector('body');
+                for (let i = 0; i < 30; i++) {
+                    const petal = document.createElement('div');
+                    petal.classList.add('petal');
+                    
+                    // Random properties
+                    const size = Math.random() * 15 + 5;
+                    const posX = Math.random() * window.innerWidth;
+                    const posY = Math.random() * window.innerHeight;
+                    const delay = Math.random() * 5;
+                    const duration = Math.random() * 15 + 10;
+                    const opacity = Math.random() * 0.6 + 0.2;
+                    
+                    petal.style.width = `${size}px`;
+                    petal.style.height = `${size}px`;
+                    petal.style.left = `${posX}px`;
+                    petal.style.top = `${posY}px`;
+                    petal.style.opacity = opacity;
+                    petal.style.animationDelay = `${delay}s`;
+                    petal.style.animationDuration = `${duration}s`;
+                    
+                    container.appendChild(petal);
+                }
+            }
+            
+            createPetals();
+            
+            // Infinity symbol animation
+            gsap.to("#infinitySymbol", {
+                rotate: 360,
+                duration: 8,
+                repeat: -1,
+                ease: "none"
+            });
+        });
+    </script>
+</body>
+</html>
