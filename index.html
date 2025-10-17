@@ -48,16 +48,8 @@
 </head>
 <body class="font-poppins bg-gradient-to-b from-[#1a2a6c] via-[#77BEF0] to-[#ffffff] min-h-screen text-white overflow-x-hidden">
     <audio id="bgMusic" loop>
-        <source src="./song.mp3" type="audio/mpeg">
+        <source src= "./song.mp3" type="audio/mpeg">
     </audio>
-
-
-document.querySelector('#musicToggle').addEventListener('click', () => {
-    bgMusic.play();
-});
-
-
-    
     <div class="fixed top-4 right-4 z-50 flex gap-2">
         <button id="musicToggle" class="p-2 bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition-all">
             <i data-feather="music"></i>
